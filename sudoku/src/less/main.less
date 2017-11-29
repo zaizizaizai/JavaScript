@@ -1,0 +1,159 @@
+//定义一个阴影
+@shadowBottom: 0 0.2rem 0.3rem rgba(48,48,48,192);
+@shadowTop: 0 -0.1rem 0.2rem rgba(48,48,48,192);
+
+html {
+    font-size: 14px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    //白色背景
+    background: #eeeeee;
+    //等宽字体
+    font-family: "Consolas","微软雅黑";
+    //禁止用户选择
+    user-select: none;
+    //限制大小
+    max-width: 450px;
+    >* {
+        max-width: 450px;
+    }
+}
+
+.title {
+    //上下一个字符空间，左右5%空间
+    padding: 1rem 5%;
+    background: steelblue;
+    color: white;
+    margin-bottom: 2rem;
+    //设置阴影
+    box-shadow: @shadowBottom;
+
+    h1 {
+        margin: 0;
+        padding: 0;
+        font-weight: normal;
+    }
+}
+
+.hidden {
+    //不显示
+    display: none;
+}
+
+.container {
+    padding-left: 5%;
+
+    .row {
+        >span {
+            display: inline-block;
+            cursor: pointer;
+            text-align: center;
+            width: 10%;
+            height: 24px;
+            line-height: 24px;
+            border: 1px solid #cccccc;
+            //去掉左右边宽
+            border-right-width: 0;
+            border-left-style: 0;
+            background: white;
+
+            &.col_g_right {
+                border-right-width: 1px;
+            }
+
+            //最左边
+            &:first-child {
+                border-left-width: 2px;
+            }
+            //最右边
+            &:last-child {
+                border-right-width: 2px;
+            }
+            &.fixed {
+                background: #eeeeee;
+            }
+            &.empty {
+                color: white;
+            }
+            &.mark1 {
+                background: lightpink;
+            }
+            &.mark2 {
+                background: lightgreen;
+            }
+        }
+
+        &.row_g_bottom {
+            >span {
+                border-bottom-width: 1px;
+            }
+        }
+
+        //第一行
+        &:first-child {
+            >span {
+                border-top-width: 2px;
+            }
+        }
+        //最后一行
+        &:last-child {
+            > span {
+                border-bottom-width: 2px;
+            }
+        }
+    }
+}
+
+//弹出框
+@popupCellSize: 40px;
+.popup-num {
+    .container();
+    position: absolute;
+    padding-left: 0;
+    .row {
+        >span {
+            width: @popupCellSize;
+            height: @popupCellSize;
+            line-height: @popupCellSize;
+        }
+    }
+}
+
+//按钮
+.dashboard {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem 0;
+    background: steelblue;
+    box-sizing: border-box;
+    box-shadow: @shadowTop;
+    height: 3rem;
+}
+
+//按钮组
+.buttons {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    button {
+        float: left;
+        width: 25%;
+        height: 3rem;
+        font-size: 1.3rem;
+        font-family: "微软雅黑";
+        color: white;
+        border: 1px solid #cccccc;
+        background: transparent;
+        border-right-width: 0;
+        &:last-child {
+            border-right-width: 1px;
+        }
+    }
+}
